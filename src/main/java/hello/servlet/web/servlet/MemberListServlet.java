@@ -1,4 +1,4 @@
-package hello.servlet.web;
+package hello.servlet.web.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -12,7 +12,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet(name = "MemberListServlet", urlPatterns = "/servlet/members")
+@WebServlet(name = "memberListServlet", urlPatterns = "/servlet/members")
 public class MemberListServlet extends HttpServlet{
 
 	private MemberRepository memberRepository = MemberRepository.getInstance();

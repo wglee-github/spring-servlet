@@ -1,4 +1,4 @@
-package hello.servlet.web;
+package hello.servlet.web.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -10,7 +10,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet(name = "MemberFormServlet", urlPatterns = "/servlet/members/new-form")
+@WebServlet(name = "memberFormServlet", urlPatterns = "/servlet/members/new-form")
 public class MemberFormServlet extends HttpServlet{
 
 	@Override

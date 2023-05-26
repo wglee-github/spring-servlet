@@ -1,18 +1,18 @@
-package hello.servlet.web;
+package hello.servlet.web.servletmvc;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import hello.servlet.domain.member.Member;
 import hello.servlet.domain.member.MemberRepository;
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet(name = "MemberSaveServlet", urlPatterns = "/servlet/members/save")
-public class MemberSaveServlet extends HttpServlet{
+@WebServlet(displayName = "mvcMemberSaveServlet", urlPatterns = "/servlet-mvc/members/save")
+public class MvcMemberSaveServlet extends HttpServlet{
 
 	private MemberRepository memberRepository = MemberRepository.getInstance();
 	
@@ -24,24 +24,11 @@ public class MemberSaveServlet extends HttpServlet{
 		Member member = new Member(username, age);
 		Member saveMember = memberRepository.save(member);
 		
-		response.setContentType("text/html");
-		response.setCharacterEncoding("utf-8");
+		// model에 담는다.
+		request.setAttribute("member", saveMember);
 		
-		PrintWriter w = response.getWriter();
-		w.write("<html>\n" +
-				 "<head>\n" +
-				 " <meta charset=\"UTF-8\">\n" +
-				 "</head>\n" +
-				 "<body>\n" +
-				 "성공\n" +
-				 "<ul>\n" +
-				 " <li>id="+saveMember.getId()+"</li>\n" +
-				 " <li>username="+saveMember.getUsername()+"</li>\n" +
-				 " <li>age="+saveMember.getAge()+"</li>\n" +
-				 "</ul>\n" +
-				 "<a href=\"/index.html\">메인</a>\n" +
-				 "</body>\n" +
-				 "</html>");
-
+		String viewPath = "/WEB-INF/views/save-result.jsp";
+		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPath);
+		dispatcher.forward(request, response);
 	}
 }

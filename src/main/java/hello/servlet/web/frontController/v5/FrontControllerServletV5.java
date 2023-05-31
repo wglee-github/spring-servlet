@@ -34,8 +34,8 @@ import jakarta.servlet.http.HttpServletResponse;
 @WebServlet(name = "frontControllerServletV5", urlPatterns = "/front-controller/v5/*")
 public class FrontControllerServletV5 extends HttpServlet{
 
-	private final Map<String, Object> handlerMappingMap = new HashMap<>();
-	private final List<MyHandlerAdapter> handlerAdapters = new ArrayList<>();
+	private final Map<String, Object> handlerMappingMap = new HashMap<>();		// 핸들러 맵핑 정보
+	private final List<MyHandlerAdapter> handlerAdapters = new ArrayList<>();	// 핸들러 어댑터 목록 정보
 
 	
 	public FrontControllerServletV5() {
